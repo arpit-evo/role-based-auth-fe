@@ -4,26 +4,16 @@ import { MdLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import UserSection from "../components/UserSection";
+import ModeratorSection from "../components/ModeratorSection";
 
 const HomePage = () => {
   const [user, setUser] = useState({});
-  const [role, setRole] = useState("");
   const navigate = useNavigate();
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-  } = useForm();
 
   useEffect(() => {
     const fetchMe = async () => {
       const response = await axiosInstance.get("/api/user/me");
-      setRole(response.data.data.role);
       setUser(response.data.data);
-
-      setValue("email", response.data.data.email);
     };
     fetchMe();
   }, []);
@@ -31,7 +21,6 @@ const HomePage = () => {
   const handleLogout = () => {
     localStorage.clear();
     setUser({});
-    setRole("");
     navigate("/login");
   };
 
@@ -39,9 +28,9 @@ const HomePage = () => {
     <div className="p-20 ">
       <div className="max-w-7xl flex justify-between mx-auto mb-8">
         <div className="text-2xl">
-          {role === "user" && "Home Page"}
-          {role === "admin" && "Admin Page"}
-          {role === "moderator" && "Moderator Page"}
+          {user.role === "user" && "Home Page"}
+          {user.role === "admin" && "Admin Page"}
+          {user.role === "moderator" && "Moderator Page"}
         </div>
         <div
           className="flex gap-2 items-center text-center z-10 cursor-pointer"
@@ -52,7 +41,8 @@ const HomePage = () => {
         </div>
       </div>
       <div className="w-[40rem] mx-auto ">
-        <UserSection user={user} />
+        {user.role === "user" && <UserSection user={user} />}
+        {user.role === "moderator" && <ModeratorSection user={user} />}
       </div>
     </div>
   );
