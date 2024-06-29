@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../apis/axiosInstance";
 
-const LoginPage = () => {
+const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -42,22 +42,26 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 w-fit mx-auto">
-      <h1 className="mb-2 text-5xl">{isLoading ? "Processing" : "Login"}</h1>
-      <hr />
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 min-w-full mx-auto">
+      <h1 className="mb-4 text-5xl font-bold">
+        {isLoading ? "Loading" : "Login"}
+      </h1>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col min-w-96"
+      >
         <div className="flex flex-col">
-          <label htmlFor="email" className="text-left w-full">
-            email
+          <label htmlFor="email" className="text-left w-full mb-1">
+            Email
           </label>
           <input
-            className={`p-2 border-2 rounded-lg mb-2 outline-none focus:border-gray-600 bg-transparent ${
+            className={`w-full p-2 px-4 border-2 rounded-lg mb-4 outline-none border-gray-600 focus:border-white bg-transparent ${
               errors.email && "focus:border-red-500 border-red-500"
             }`}
             id="email"
             type="email"
             value={formData.email}
-            placeholder="email"
+            placeholder="Email"
             {...register("email", {
               required: "Email is required",
               pattern: {
@@ -78,23 +82,19 @@ const LoginPage = () => {
           )}
         </div>
         <div className="flex flex-col">
-          <label htmlFor="password" className="text-left w-full">
-            password
+          <label htmlFor="password" className="text-left w-full mb-1">
+            Password
           </label>
           <input
-            className={`p-2 border-2 rounded-lg mb-2 outline-none focus:border-gray-600 bg-transparent  ${
+            className={`p-2 px-4 border-2 rounded-lg mb-4  border-gray-600 focus:border-white bg-transparent  ${
               errors.password && "focus:border-red-500 border-red-500"
             }`}
             id="password"
             type="password"
             value={formData.password}
-            placeholder="password"
+            placeholder="Password"
             {...register("password", {
               required: "Password is required",
-              minLength: {
-                value: 6,
-                message: "password at least 6 char long ",
-              },
             })}
             onChange={(e) => {
               setFormData({ ...formData, password: e.target.value });
@@ -110,7 +110,7 @@ const LoginPage = () => {
         </div>
         {errorMessage && <div className="text-red-500">{errorMessage}</div>}
         <button
-          className=" w-full h-14 rounded-xl border hover:bg-gray-700"
+          className="w-full p-2 rounded-xl border hover:bg-gray-700 mt-2 font-semibold"
           type="submit"
           disabled={isLoading}
         >
@@ -147,4 +147,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;

@@ -2,7 +2,6 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
-  withCredentials: true,
 });
 
 axiosInstance.interceptors.request.use(
@@ -19,5 +18,4 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-
-export default axiosInstance
+export default axiosInstance;
