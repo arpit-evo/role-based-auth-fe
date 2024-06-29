@@ -1,8 +1,25 @@
-# React + Vite
+# Role Based Access
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This web app has 3 main routes "/", "/login", "/register" out of which "/" is protected and register, login is open.
+We have 3 Roles "**ADMIN**", "**MODERATOR**" and "**USER**".
 
-Currently, two official plugins are available:
+Here are the credentials to try each role out.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **ADMIN**
+
+  - Email: admin@yopmail.com
+  - Password: Pass123-1
+
+- **MODERATOR**
+
+  - Email: moderator@yopmail.com
+  - Password: Pass123-1
+
+- **USER**
+
+  - Email: user@yopmail.com
+  - Password: Pass123-1
+
+- **User** can edit his/her's user name.
+- **Moderator** can view all the users and their roles.
+- **Admin** can view all the users and their roles also can delete or change a user.
