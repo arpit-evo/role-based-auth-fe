@@ -23,3 +23,9 @@ Here are the credentials to try each role out.
 - **User** can edit his/her's user name.
 - **Moderator** can view all the users and their roles.
 - **Admin** can view all the users and their roles also can delete or change a user.
+
+## Here is the demo video of this project
+
+![demo video](https://drive.google.com/file/d/17lXtvxwkX5Q3p6d3lJFokzE67vyT3Zim/view?usp=sharing)
+
+- https://drive.google.com/file/d/17lXtvxwkX5Q3p6d3lJFokzE67vyT3Zim/view?usp=sharing
