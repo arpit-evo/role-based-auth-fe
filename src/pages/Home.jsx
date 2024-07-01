@@ -18,7 +18,9 @@ const Home = () => {
       setLoading(false);
       localStorage.setItem("userDetails", JSON.stringify(response.data.data));
     };
-    fetchMe();
+    setTimeout(()=> {
+      fetchMe();
+    },3000)
   }, []);
 
   return (
