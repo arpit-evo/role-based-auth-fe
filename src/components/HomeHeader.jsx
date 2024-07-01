@@ -8,7 +8,7 @@ export default function HomeHeader(props) {
 
   const handleLogout = () => {
     localStorage.clear();
-    navigate("/login");
+    navigate("/login", { replace: true });
   };
 
   return user ? (
